@@ -1,10 +1,13 @@
-Contact me if you cannot compile yourself or you find any bugs / improvements
-http://steamcommunity.com/id/Paymh/
+# Livelogs Statistic Parser
 
-Built with:
+Contact me if you cannot compile yourself or you find any bugs / improvements
+#####http://steamcommunity.com/id/Paymh/   
+   
+   
+####Built with:
 	- Visual Studio 2015 Preview
 	- .NET Framework 4.5
 
-Uses:
+####Uses:
 	- Microsoft Excel 12.0 Object Library (Office 2007)
 	
