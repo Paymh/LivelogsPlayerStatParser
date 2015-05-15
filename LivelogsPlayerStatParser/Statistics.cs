@@ -27,9 +27,9 @@ namespace LivelogsPlayerStatParser
         {
             dynamic convertedValue = null;
             if (this.ValueType == DataTypes.DOUBLE)
-                convertedValue = Convert.ToDouble(value);
+                convertedValue = Math.Round(Convert.ToDouble(value),2);
             else if (this.ValueType == DataTypes.FLOAT)
-                convertedValue = Convert.ToSingle(value);
+                convertedValue = Math.Round(Convert.ToSingle(value),2);
             else if (this.ValueType == DataTypes.INT)
                 convertedValue = Convert.ToInt32(value);
             else if (this.ValueType == DataTypes.STRING)
