@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Net;
 using HtmlAgilityPack;
 
@@ -13,13 +12,17 @@ namespace LivelogsPlayerStatParser
         public Team RedTeam = new Team();
         public Team BlueTeam = new Team();
         public String Html, LogID, Name, Server, Map, GameTime, URL;
+        public double Weighting;
         public DateTime dateTime;
         public HtmlDocument doc = new HtmlDocument();
-        public Log(String URL)
+        public Log(String URL, double weighting)
         {
+            if (!URL.StartsWith("http://"))
+                URL = "http://" + URL;
             Html = new WebClient().DownloadString(URL);
             doc.LoadHtml(Html);
             this.URL = URL;
+            this.Weighting = weighting;
         }
         public void ParseLog()
         {
@@ -58,7 +61,7 @@ namespace LivelogsPlayerStatParser
                     player.CustomStats[overhealing_done_index].ChangeValue(doc.GetElementbyId(player.steamID + "." + player.CustomStats[overhealing_done_index].IdName).InnerText, false);                
                     player.CustomStats[ubers_used_index].ChangeValue(doc.GetElementbyId(player.steamID + "." + player.CustomStats[ubers_used_index].IdName).InnerText, false);                  
                     player.CustomStats[ubers_lost_index].ChangeValue(doc.GetElementbyId(player.steamID + "." + player.CustomStats[ubers_lost_index].IdName).InnerText, false);              
-                    player.CustomStats[ulp_index].ChangeValue(GetPercentage(player.CustomStats[ubers_used_index].Value + player.CustomStats[ubers_lost_index].Value, player.CustomStats[ubers_lost_index].Value), false);
+                    player.CustomStats[ulp_index].ChangeValue(GetPercentage(player.CustomStats[ubers_used_index].Value, player.CustomStats[ubers_lost_index].Value), false);
                 }
                 else
                 {

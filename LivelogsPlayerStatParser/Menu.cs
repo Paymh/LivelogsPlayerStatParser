@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 
@@ -29,13 +28,14 @@ namespace LivelogsPlayerStatParser
                 if (item.Checked)
                     logsToOutput.Add(LogHandler.logsTracked[item.Index]);
             }
-            ExcelHandler.OutputExcel();
-            
+            ExcelHandler.OutputExcel();    
         }
 
         private void btnParseLog_Click(object sender, EventArgs e)
         {
-            bool result = LogHandler.ParseLog(txtLogUri.Text);
+            if (txtLogWeighting.Text == "")
+                txtLogWeighting.Text = "0.5";
+            bool result = LogHandler.ParseLog(txtLogUri.Text,Convert.ToDouble(txtLogWeighting.Text));
             if (result)
             {
                 lstLogsTracked.Items.Clear();
@@ -45,9 +45,10 @@ namespace LivelogsPlayerStatParser
                     item.SubItems[0].Text = log.URL.Replace(@"http://livelogs.ozfortress.com/view/", "");
                     item.SubItems.Add(log.dateTime.ToString());
                     item.SubItems.Add(log.Map);
+                    item.SubItems.Add(log.Weighting.ToString());
                     lstLogsTracked.Items.Add(item);
                 }
-                lstLogsTracked.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                lstLogsTracked.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
         }
 

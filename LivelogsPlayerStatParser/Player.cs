@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace LivelogsPlayerStatParser
 {
     public class Player
     {
-        public String Name;
         public long steamID;
         public List<Statistics> Stats = new List<Statistics>();
         public List<Statistics> CustomStats = new List<Statistics>();

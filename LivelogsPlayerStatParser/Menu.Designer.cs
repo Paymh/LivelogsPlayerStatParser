@@ -37,21 +37,24 @@
             this.colLogID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colMap = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colLogWeighting = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnRemoveLogs = new System.Windows.Forms.Button();
+            this.lblLogWeighting = new System.Windows.Forms.Label();
+            this.txtLogWeighting = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtLogUri
             // 
-            this.txtLogUri.Location = new System.Drawing.Point(56, 12);
+            this.txtLogUri.Location = new System.Drawing.Point(79, 12);
             this.txtLogUri.Name = "txtLogUri";
             this.txtLogUri.Size = new System.Drawing.Size(273, 20);
             this.txtLogUri.TabIndex = 0;
             // 
             // btnParseLog
             // 
-            this.btnParseLog.Location = new System.Drawing.Point(335, 12);
+            this.btnParseLog.Location = new System.Drawing.Point(286, 35);
             this.btnParseLog.Name = "btnParseLog";
-            this.btnParseLog.Size = new System.Drawing.Size(66, 21);
+            this.btnParseLog.Size = new System.Drawing.Size(66, 25);
             this.btnParseLog.TabIndex = 1;
             this.btnParseLog.Text = "Parse Log";
             this.btnParseLog.UseVisualStyleBackColor = true;
@@ -68,7 +71,7 @@
             // 
             // btnExportExcel
             // 
-            this.btnExportExcel.Location = new System.Drawing.Point(298, 221);
+            this.btnExportExcel.Location = new System.Drawing.Point(304, 266);
             this.btnExportExcel.Name = "btnExportExcel";
             this.btnExportExcel.Size = new System.Drawing.Size(94, 26);
             this.btnExportExcel.TabIndex = 3;
@@ -78,7 +81,7 @@
             // 
             // btnClearHistory
             // 
-            this.btnClearHistory.Location = new System.Drawing.Point(215, 221);
+            this.btnClearHistory.Location = new System.Drawing.Point(221, 266);
             this.btnClearHistory.Name = "btnClearHistory";
             this.btnClearHistory.Size = new System.Drawing.Size(77, 25);
             this.btnClearHistory.TabIndex = 4;
@@ -92,10 +95,12 @@
             this.lstLogsTracked.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colLogID,
             this.colDate,
-            this.colMap});
+            this.colMap,
+            this.colLogWeighting});
+            this.lstLogsTracked.FullRowSelect = true;
             this.lstLogsTracked.GridLines = true;
             this.lstLogsTracked.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.lstLogsTracked.Location = new System.Drawing.Point(3, 38);
+            this.lstLogsTracked.Location = new System.Drawing.Point(3, 82);
             this.lstLogsTracked.Name = "lstLogsTracked";
             this.lstLogsTracked.Size = new System.Drawing.Size(398, 178);
             this.lstLogsTracked.TabIndex = 5;
@@ -113,11 +118,16 @@
             // colMap
             // 
             this.colMap.Text = "Map";
-            this.colMap.Width = 273;
+            this.colMap.Width = 186;
+            // 
+            // colLogWeighting
+            // 
+            this.colLogWeighting.Text = "Weighting";
+            this.colLogWeighting.Width = 88;
             // 
             // btnRemoveLogs
             // 
-            this.btnRemoveLogs.Location = new System.Drawing.Point(107, 221);
+            this.btnRemoveLogs.Location = new System.Drawing.Point(113, 266);
             this.btnRemoveLogs.Name = "btnRemoveLogs";
             this.btnRemoveLogs.Size = new System.Drawing.Size(102, 25);
             this.btnRemoveLogs.TabIndex = 6;
@@ -125,11 +135,30 @@
             this.btnRemoveLogs.UseVisualStyleBackColor = true;
             this.btnRemoveLogs.Click += new System.EventHandler(this.btnRemoveLogs_Click);
             // 
+            // lblLogWeighting
+            // 
+            this.lblLogWeighting.AutoSize = true;
+            this.lblLogWeighting.Location = new System.Drawing.Point(0, 38);
+            this.lblLogWeighting.Name = "lblLogWeighting";
+            this.lblLogWeighting.Size = new System.Drawing.Size(76, 13);
+            this.lblLogWeighting.TabIndex = 8;
+            this.lblLogWeighting.Text = "Log Weighting";
+            // 
+            // txtLogWeighting
+            // 
+            this.txtLogWeighting.Location = new System.Drawing.Point(79, 38);
+            this.txtLogWeighting.Name = "txtLogWeighting";
+            this.txtLogWeighting.Size = new System.Drawing.Size(45, 20);
+            this.txtLogWeighting.TabIndex = 7;
+            this.txtLogWeighting.Text = "0.5";
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(404, 259);
+            this.ClientSize = new System.Drawing.Size(404, 303);
+            this.Controls.Add(this.lblLogWeighting);
+            this.Controls.Add(this.txtLogWeighting);
             this.Controls.Add(this.btnRemoveLogs);
             this.Controls.Add(this.lstLogsTracked);
             this.Controls.Add(this.btnClearHistory);
@@ -156,6 +185,9 @@
         private System.Windows.Forms.ColumnHeader colDate;
         private System.Windows.Forms.ColumnHeader colMap;
         private System.Windows.Forms.Button btnRemoveLogs;
+        private System.Windows.Forms.ColumnHeader colLogWeighting;
+        private System.Windows.Forms.Label lblLogWeighting;
+        private System.Windows.Forms.TextBox txtLogWeighting;
     }
 }
 
