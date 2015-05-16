@@ -28,7 +28,10 @@ namespace LivelogsPlayerStatParser
                 if (item.Checked)
                     logsToOutput.Add(LogHandler.logsTracked[item.Index]);
             }
-            ExcelHandler.OutputExcel();
+            if (chkAverageOutput.Checked)
+                ExcelHandler.OutputExcel(false);
+            else
+                ExcelHandler.OutputExcel(true);
         }
 
         private void btnParseLog_Click(object sender, EventArgs e)
@@ -109,6 +112,16 @@ namespace LivelogsPlayerStatParser
                 }
                 System.IO.File.WriteAllText(dialog.FileName, output);
             }
+        }
+
+        private void chkFullOutput_CheckedChanged(object sender, EventArgs e)
+        {
+            chkAverageOutput.Checked = !chkFullOutput.Checked;
+        }
+
+        private void chkAverageOutput_CheckedChanged(object sender, EventArgs e)
+        {
+            chkFullOutput.Checked = !chkAverageOutput.Checked;
         }
     }
 }

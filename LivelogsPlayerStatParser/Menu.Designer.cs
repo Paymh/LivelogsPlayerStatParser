@@ -43,6 +43,8 @@
             this.txtLogWeighting = new System.Windows.Forms.TextBox();
             this.btnOpenHistory = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.chkFullOutput = new System.Windows.Forms.CheckBox();
+            this.chkAverageOutput = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtLogUri
@@ -73,7 +75,7 @@
             // 
             // btnExportExcel
             // 
-            this.btnExportExcel.Location = new System.Drawing.Point(366, 243);
+            this.btnExportExcel.Location = new System.Drawing.Point(366, 269);
             this.btnExportExcel.Name = "btnExportExcel";
             this.btnExportExcel.Size = new System.Drawing.Size(94, 26);
             this.btnExportExcel.TabIndex = 3;
@@ -83,7 +85,7 @@
             // 
             // btnClearHistory
             // 
-            this.btnClearHistory.Location = new System.Drawing.Point(286, 243);
+            this.btnClearHistory.Location = new System.Drawing.Point(286, 269);
             this.btnClearHistory.Name = "btnClearHistory";
             this.btnClearHistory.Size = new System.Drawing.Size(77, 25);
             this.btnClearHistory.TabIndex = 4;
@@ -129,7 +131,7 @@
             // 
             // btnRemoveLogs
             // 
-            this.btnRemoveLogs.Location = new System.Drawing.Point(181, 243);
+            this.btnRemoveLogs.Location = new System.Drawing.Point(181, 269);
             this.btnRemoveLogs.Name = "btnRemoveLogs";
             this.btnRemoveLogs.Size = new System.Drawing.Size(102, 25);
             this.btnRemoveLogs.TabIndex = 6;
@@ -156,7 +158,7 @@
             // 
             // btnOpenHistory
             // 
-            this.btnOpenHistory.Location = new System.Drawing.Point(3, 243);
+            this.btnOpenHistory.Location = new System.Drawing.Point(3, 269);
             this.btnOpenHistory.Name = "btnOpenHistory";
             this.btnOpenHistory.Size = new System.Drawing.Size(83, 25);
             this.btnOpenHistory.TabIndex = 9;
@@ -166,7 +168,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(92, 243);
+            this.btnSave.Location = new System.Drawing.Point(92, 269);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(83, 25);
             this.btnSave.TabIndex = 10;
@@ -174,11 +176,37 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // chkFullOutput
+            // 
+            this.chkFullOutput.AutoSize = true;
+            this.chkFullOutput.Checked = true;
+            this.chkFullOutput.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkFullOutput.Location = new System.Drawing.Point(321, 246);
+            this.chkFullOutput.Name = "chkFullOutput";
+            this.chkFullOutput.Size = new System.Drawing.Size(42, 17);
+            this.chkFullOutput.TabIndex = 11;
+            this.chkFullOutput.Text = "Full";
+            this.chkFullOutput.UseVisualStyleBackColor = true;
+            this.chkFullOutput.CheckedChanged += new System.EventHandler(this.chkFullOutput_CheckedChanged);
+            // 
+            // chkAverageOutput
+            // 
+            this.chkAverageOutput.AutoSize = true;
+            this.chkAverageOutput.Location = new System.Drawing.Point(382, 246);
+            this.chkAverageOutput.Name = "chkAverageOutput";
+            this.chkAverageOutput.Size = new System.Drawing.Size(71, 17);
+            this.chkAverageOutput.TabIndex = 12;
+            this.chkAverageOutput.Text = "Averages";
+            this.chkAverageOutput.UseVisualStyleBackColor = true;
+            this.chkAverageOutput.CheckedChanged += new System.EventHandler(this.chkAverageOutput_CheckedChanged);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(463, 274);
+            this.ClientSize = new System.Drawing.Size(463, 302);
+            this.Controls.Add(this.chkAverageOutput);
+            this.Controls.Add(this.chkFullOutput);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnOpenHistory);
             this.Controls.Add(this.lblLogWeighting);
@@ -214,6 +242,8 @@
         private System.Windows.Forms.TextBox txtLogWeighting;
         private System.Windows.Forms.Button btnOpenHistory;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.CheckBox chkFullOutput;
+        private System.Windows.Forms.CheckBox chkAverageOutput;
     }
 }
 

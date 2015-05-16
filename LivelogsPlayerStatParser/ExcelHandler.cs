@@ -70,7 +70,7 @@ namespace LivelogsPlayerStatParser
             }
         }
 
-        public static void OutputExcel()
+        public static void OutputExcel(bool full)
         {
             int currentRow = 1, currentColumn = 1;
             for (int i = 0; i < LogHandler.logsTracked[0].BlueTeam.TeamPlayers[0].Stats.Count; i++) //Loop each stat
@@ -96,29 +96,33 @@ namespace LivelogsPlayerStatParser
                     if (i == 0)
                     {
                         ChangeCell(currentColumn, currentRow, playerStats[i].Stats[0].Value.ToString(), CellType.Name);
-                        currentRow++;
+                        if (full)
+                            currentRow++;
                     }
                     String classesPlayed = "";
                     foreach (Class classes in playerStats[i].ClassesPlayed)
                     {
                         classesPlayed += classes.classType.ToString() + " | ";
                     }
-                    ChangeCell(currentColumn, currentRow, classesPlayed, CellType.Stat);
+                    if (full)
+                        ChangeCell(currentColumn, currentRow, classesPlayed, CellType.Stat);
                     for (int j = 1; j < playerStats[i].Stats.Count; j++) //Output stats and add to average
                     {
                         currentColumn++;
-                        ChangeCell(currentColumn, currentRow, Convert.ToString(playerStats[i].Stats[j].Value), CellType.Stat);
-                        ;
+                        if (full)
+                            ChangeCell(currentColumn, currentRow, Convert.ToString(playerStats[i].Stats[j].Value), CellType.Stat);
                         averages.Stats[j].ChangeValue(playerStats[i].Stats[j].Value, true);
                     }
                     currentColumn++;
                     for (int k = 0; k < playerStats[i].CustomStats.Count; k++) //Output custom stats and add to average
                     {
-                        ChangeCell(currentColumn, currentRow, Convert.ToString(playerStats[i].CustomStats[k].Value), CellType.Stat);
+                        if (full)
+                            ChangeCell(currentColumn, currentRow, Convert.ToString(playerStats[i].CustomStats[k].Value), CellType.Stat);
                         currentColumn++;
                         averages.CustomStats[k].ChangeValue(playerStats[i].CustomStats[k].Value, true);
                     }
-                    currentRow++;
+                    if (full)
+                        currentRow++;
                     currentColumn = 1;
                 }
                 currentColumn = 2;
@@ -149,7 +153,10 @@ namespace LivelogsPlayerStatParser
                         ChangeCell(currentColumn, currentRow, Math.Round((averages.CustomStats[k].Value / logWeighting), 2).ToString(), CellType.Average);
                     currentColumn++;
                 }
-                currentRow++;
+                if (full)
+                    currentRow++;
+                else
+                    currentRow += 2;
                 currentColumn = 1;
             }
             xlApp.Columns.AutoFit();
